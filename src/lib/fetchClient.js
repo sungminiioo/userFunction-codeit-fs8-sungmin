@@ -1,3 +1,5 @@
+import { headers } from "next/headers";
+
 /**
  * 기본 fetch 클라이언트 - 인증이 필요 없는 일반 요청용
  */
@@ -44,8 +46,13 @@ export const cookieFetch = async (url, options = {}) => {
   const defaultOptions = {
     // TODO: 실습내용
     // 1. 쿠키 전송을 위한 설정
+    Credentials: "include",
     // 2. 서버 컴포넌트에서도 매번 재검증을 cache 옵션
+    cache: "no-store",
     // 3. Content-Type 헤더 설정
+    headers: {
+      "Content-type": "application/json",
+    },
   };
 
   const mergedOptions = {
